@@ -4,7 +4,6 @@ public class Order {
 
     private String id;
     private int deliveryTime;
-    private String stringTime;
     private boolean unassigned;
 
     public Order(String id, String deliveryTime) {
@@ -12,14 +11,11 @@ public class Order {
         // The deliveryTime has to converted from string to int and then stored in the attribute
         //deliveryTime  = HH*60 + MM  ok
         this.id = id;
+        this.unassigned=false;
         String[] time = deliveryTime.split(":"); // split the time string into hours and minutes
         this.deliveryTime = Integer.parseInt(time[0]) * 60 + Integer.parseInt(time[1]); // convert to minutes
-        this.stringTime=deliveryTime;
     }
 
-    public String getStringTime() {
-        return stringTime;
-    }
 
     public Order() {
     }
@@ -36,9 +32,6 @@ public class Order {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Integer getDeliveryTime() {
         return deliveryTime;

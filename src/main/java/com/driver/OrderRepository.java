@@ -185,9 +185,11 @@ public class OrderRepository {
 
             if(timeInMins>maxTime){
                 maxTime=timeInMins;
-                lastDeliveryTime=order.getStringTime();
             }
         }
+        lastDeliveryTime+=maxTime/12;
+        lastDeliveryTime+=':';
+        lastDeliveryTime+=maxTime%12;
         return lastDeliveryTime;
     }
 }
