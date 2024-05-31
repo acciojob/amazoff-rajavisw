@@ -186,6 +186,7 @@ public class OrderRepository {
                 maxTime=timeInMins;
             }
         }
+        if(maxTime/12<10) lastDeliveryTime+='0';
         lastDeliveryTime+=maxTime/12;
         lastDeliveryTime+=':';
         lastDeliveryTime+=maxTime%12;
