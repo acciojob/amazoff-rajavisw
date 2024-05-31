@@ -3,7 +3,8 @@ package com.driver;
 public class Order {
 
     private String id;
-    private String deliveryTime;
+    private int deliveryTime;
+    private String stringTime;
     private boolean unassigned;
 
     public Order(String id, String deliveryTime) {
@@ -11,9 +12,14 @@ public class Order {
         // The deliveryTime has to converted from string to int and then stored in the attribute
         //deliveryTime  = HH*60 + MM  ok
         this.id=id;
-        //int dTime=Integer.parseInt(deliveryTime.substring(0,2))*60+Integer.parseInt(deliveryTime.substring(3,5));
-        this.deliveryTime=deliveryTime;
+        int dTime=Integer.parseInt(deliveryTime.substring(0,2))*60+Integer.parseInt(deliveryTime.substring(3,5));
+        this.deliveryTime=dTime;
         this.unassigned=false;
+        this.stringTime=deliveryTime;
+    }
+
+    public String getStringTime() {
+        return stringTime;
     }
 
     public Order() {
@@ -35,11 +41,10 @@ public class Order {
         this.id = id;
     }
 
-    public String getDeliveryTime() {
+    public Integer getDeliveryTime() {
         return deliveryTime;
     }
 
-    public void setDeliveryTime(String deliveryTime) {
-        this.deliveryTime = deliveryTime;
-    }
 }
+
+

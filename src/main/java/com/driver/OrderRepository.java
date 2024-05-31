@@ -141,7 +141,7 @@ public class OrderRepository {
         // your code here
         Integer countOfOrders=0;
         for(Order order:orderMap.values()){
-            if(order.isUnassigned()==false) countOfOrders++;
+            if(!order.isUnassigned()) countOfOrders++;
         }
         return countOfOrders;
     }
@@ -157,8 +157,7 @@ public class OrderRepository {
         for(String id:allOrders){
             Order order=orderMap.get(id);
 
-            String[] time=order.getDeliveryTime().split(":");
-            int timeInMins=(Integer.parseInt(time[0])*60)+Integer.parseInt(time[1]);
+            int timeInMins=order.getDeliveryTime();
 
             String[] currTime=timeString.split(":");
             int currTimeInMins=(Integer.parseInt(currTime[0])*60)+Integer.parseInt(currTime[1]);
@@ -182,12 +181,11 @@ public class OrderRepository {
         for(String id:allOrders){
             Order order=orderMap.get(id);
 
-            String[] time=order.getDeliveryTime().split(":");
-            int timeInMins=(Integer.parseInt(time[0])*60)+Integer.parseInt(time[1]);
+            int timeInMins=order.getDeliveryTime();
 
             if(timeInMins>maxTime){
                 maxTime=timeInMins;
-                lastDeliveryTime=order.getDeliveryTime();
+                lastDeliveryTime=order.getStringTime();
             }
         }
         return lastDeliveryTime;
