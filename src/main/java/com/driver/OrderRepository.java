@@ -22,11 +22,12 @@ public class OrderRepository {
     public void saveOrder(Order order){
         // your code here
         String id=order.getId();
-        for(String key:orderMap.keySet()){
-            if(key.equals(id)){
-                throw new RuntimeException("Order Id must be unique");
-            }
-        }
+//        for(String key:orderMap.keySet()){
+//            if(key.equals(id)){
+//                throw new RuntimeException("Order Id must be unique");
+//            }
+//        }
+        order.setUnassigned(false);
         orderMap.put(id,order);
     }
 
