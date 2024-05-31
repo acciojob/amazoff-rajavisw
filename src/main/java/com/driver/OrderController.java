@@ -24,13 +24,8 @@ public class OrderController {
 
     @PostMapping("/add-order")
     public ResponseEntity<String> addOrder(@RequestBody Order order){
-        try{
-            orderService.addOrder(order);
-            return new ResponseEntity<>("New order added Successfully", HttpStatus.CREATED);
-        }
-        catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_ACCEPTABLE);
-        }
+        orderService.addOrder(order);
+        return new ResponseEntity<>("New order added successfully", HttpStatus.CREATED);
     }
 
     @PostMapping("/add-partner/{partnerId}")
