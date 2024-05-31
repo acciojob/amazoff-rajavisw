@@ -1,10 +1,7 @@
-package com.driver.Controller;
+package com.driver;
 
 import java.util.List;
 
-import com.driver.Model.DeliveryPartner;
-import com.driver.Model.Order;
-import com.driver.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -138,9 +135,13 @@ public class OrderController {
         String time = null;
 
         //Return the time when that partnerId will deliver his last delivery order.
-        time=orderService.getLastDeliveryTimeByPartnerId(partnerId);
-
-        return new ResponseEntity<>(time, HttpStatus.CREATED);
+        try{
+            time=orderService.getLastDeliveryTimeByPartnerId(partnerId);
+            return new ResponseEntity<>(time, HttpStatus.CREATED);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 
     @DeleteMapping("/delete-partner-by-id/{partnerId}")

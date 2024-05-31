@@ -1,9 +1,7 @@
-package com.driver.Repository;
+package com.driver;
 
 import java.util.*;
 
-import com.driver.Model.DeliveryPartner;
-import com.driver.Model.Order;
 import org.springframework.stereotype.Repository;
 
 @Repository
