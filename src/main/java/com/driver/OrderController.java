@@ -129,13 +129,8 @@ public class OrderController {
         String time = null;
 
         //Return the time when that partnerId will deliver his last delivery order.
-        try{
-            time=orderService.getLastDeliveryTimeByPartnerId(partnerId);
-            return new ResponseEntity<>(time, HttpStatus.CREATED);
-        }
-        catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_ACCEPTABLE);
-        }
+        time=orderService.getLastDeliveryTimeByPartnerId(partnerId);
+        return new ResponseEntity<>(time, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete-partner-by-id/{partnerId}")

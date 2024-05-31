@@ -170,26 +170,26 @@ public class OrderRepository {
     public String findLastDeliveryTimeByPartnerId(String partnerId){
         // your code here
         // code should return string in format HH:MM
-        String lastDeliveryTime=null;
-        int maxTime=Integer.MIN_VALUE;
-        HashSet<String> allOrders=partnerToOrderMap.get(partnerId);
-        if(allOrders==null){
-            throw new RuntimeException("partnerId is invalid");
-        }
 
-        for(String id:allOrders){
-            Order order=orderMap.get(id);
+        String lastDeliveryTime="";
+        if(partnerId!=null && partnerToOrderMap.get(partnerId)!=null){
+            int maxTime=Integer.MIN_VALUE;
+            HashSet<String> allOrders=partnerToOrderMap.get(partnerId);
+            for(String id:allOrders){
+                Order order=orderMap.get(id);
 
-            int timeInMins=order.getDeliveryTime();
+                int timeInMins=order.getDeliveryTime();
 
-            if(timeInMins>maxTime){
-                maxTime=timeInMins;
+                if(timeInMins>maxTime){
+                    maxTime=timeInMins;
+                }
             }
+            //if(maxTime/60<10) lastDeliveryTime+='0';
+            lastDeliveryTime+=maxTime/60;
+            lastDeliveryTime+=':';
+            lastDeliveryTime+=maxTime%60;
         }
-        if(maxTime/12<10) lastDeliveryTime+='0';
-        lastDeliveryTime+=maxTime/12;
-        lastDeliveryTime+=':';
-        lastDeliveryTime+=maxTime%12;
+
         return lastDeliveryTime;
     }
 }
