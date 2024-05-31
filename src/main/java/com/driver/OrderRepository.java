@@ -184,12 +184,12 @@ public class OrderRepository {
                     maxTime=timeInMins;
                 }
             }
-            //if(maxTime/60<10) lastDeliveryTime+='0';
+            if((maxTime/60)<10) lastDeliveryTime+='0';
             lastDeliveryTime+=maxTime/60;
             lastDeliveryTime+=':';
             lastDeliveryTime+=maxTime%60;
         }
-
+        else return null;
         return lastDeliveryTime;
     }
 }
