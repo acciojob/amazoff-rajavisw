@@ -31,7 +31,6 @@ public class OrderController {
         catch (Exception e){
             return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_ACCEPTABLE);
         }
-
     }
 
     @PostMapping("/add-partner/{partnerId}")
