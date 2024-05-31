@@ -29,7 +29,7 @@ public class OrderController {
     public ResponseEntity<String> addOrder(@RequestBody Order order){
         try{
             orderService.addOrder(order);
-            return new ResponseEntity<>("New order added successfully", HttpStatus.CREATED);
+            return new ResponseEntity<>("New order added Successfully", HttpStatus.CREATED);
         }
         catch (Exception e){
             return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_ACCEPTABLE);
